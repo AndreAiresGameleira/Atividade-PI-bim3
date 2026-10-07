@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Excluir Automóvel</h1>
+
+<p>
+    Deseja realmente excluir:
+</p>
+
+<strong>
+    {{ automovel.marca }}
+    {{ automovel.modelo }}
+</strong>
+
+<form method="post">
+
+    {% csrf_token %}
+
+    <button type="submit">
+        Sim, excluir
+    </button>
+
+</form>
+
+<a href="{% url 'lista_automoveis' %}">
+    Cancelar
+</a>
+
+{% endblock %}

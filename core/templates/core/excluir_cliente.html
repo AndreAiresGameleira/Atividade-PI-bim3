@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Excluir Cliente</h1>
+
+<p>
+    Deseja realmente excluir o cliente
+    <strong>{{ cliente.nome }}</strong>?
+</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <button type="submit">
+        Sim, excluir
+    </button>
+</form>
+
+<a href="{% url 'lista_clientes' %}">
+    Cancelar
+</a>
+
+{% endblock %}

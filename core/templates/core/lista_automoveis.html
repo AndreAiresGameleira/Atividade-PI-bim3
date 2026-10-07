@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Automóveis</h1>
+
+<a href="{% url 'criar_automovel' %}">
+    Cadastrar automóvel
+</a>
+
+<hr>
+
+{% for automovel in automoveis %}
+
+<h2>
+    {{ automovel.marca }}
+    {{ automovel.modelo }}
+</h2>
+
+<p>
+    Ano: {{ automovel.ano }}
+</p>
+
+<p>
+    Placa: {{ automovel.placa }}
+</p>
+
+<p>
+    Diária: R$ {{ automovel.valor_diaria }}
+</p>
+
+<p>
+
+    {% if automovel.disponivel %}
+        Disponível
+    {% else %}
+        Indisponível
+    {% endif %}
+
+</p>
+
+<a href="{% url 'editar_automovel' automovel.pk %}">
+    Editar
+</a>
+
+<a href="{% url 'excluir_automovel' automovel.pk %}">
+    Excluir
+</a>
+
+<hr>
+
+{% empty %}
+
+<p>
+    Nenhum automóvel cadastrado.
+</p>
+
+{% endfor %}
+
+{% endblock %}

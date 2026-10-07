@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Excluir Locação</h1>
+
+<p>
+    Deseja realmente excluir esta locação?
+</p>
+
+<p>
+    Cliente: <strong>{{ locacao.cliente.nome }}</strong>
+</p>
+
+<p>
+    Veículo: <strong>{{ locacao.veiculo }}</strong>
+</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <button type="submit">
+        Sim, excluir
+    </button>
+</form>
+
+<a href="{% url 'lista_locacoes' %}">
+    Cancelar
+</a>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Clientes</h1>
+
+<a href="{% url 'criar_cliente' %}">
+    Cadastrar cliente
+</a>
+
+<hr>
+
+{% for cliente in clientes %}
+
+<h2>
+    {{ cliente.nome }}
+</h2>
+
+<p>
+    CPF: {{ cliente.cpf }}
+</p>
+
+<p>
+    Telefone: {{ cliente.telefone }}
+</p>
+
+<p>
+    E-mail: {{ cliente.email }}
+</p>
+
+<a href="{% url 'editar_cliente' cliente.pk %}">
+    Editar
+</a>
+
+<a href="{% url 'excluir_cliente' cliente.pk %}">
+    Excluir
+</a>
+
+<hr>
+
+{% empty %}
+
+<p>
+    Nenhum cliente cadastrado.
+</p>
+
+{% endfor %}
+
+{% endblock %}

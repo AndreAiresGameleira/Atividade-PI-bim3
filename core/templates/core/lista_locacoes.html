@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Locações</h1>
+
+<a href="{% url 'criar_locacao' %}">
+    Nova locação
+</a>
+
+<hr>
+
+{% for locacao in locacoes %}
+
+<h2>
+    {{ locacao.automovel }}
+</h2>
+
+<p>
+    Cliente:
+    {{ locacao.cliente.nome }}
+</p>
+
+<p>
+    Automóvel:
+    {{ locacao.automovel }}
+</p>
+
+<p>
+    Início:
+    {{ locacao.data_inicio }}
+</p>
+
+<p>
+    Fim:
+    {{ locacao.data_fim }}
+</p>
+
+<p>
+    Valor total:
+    R$ {{ locacao.valor_total }}
+</p>
+
+<a href="{% url 'editar_locacao' locacao.pk %}">
+    Editar
+</a>
+
+<a href="{% url 'excluir_locacao' locacao.pk %}">
+    Excluir
+</a>
+
+<hr>
+
+{% empty %}
+
+<p>
+    Nenhuma locação cadastrada.
+</p>
+
+{% endfor %}
+
+{% endblock %}
